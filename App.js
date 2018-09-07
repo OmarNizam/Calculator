@@ -7,43 +7,70 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+
+    }
+  }
+
   render() {
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+
+        <View style={styles.container}>
+          <View style={styles.half1}>
+            <Text style={styles.text}> This is 1 </Text>
+          </View>
+          <View style={styles.half2}>
+            <View style={styles.half21}>
+              <Text style={styles.text}> This is 2/1 </Text>
+            </View>
+            <View style={styles.half22}>
+              <Text style={styles.text}> This is 2/2 </Text>
+            </View>
+          </View>
+        </View>
+
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
+  const styles = StyleSheet.create({
+    container: {
+      flex:1,
+    },
+    half1: {
+      flex:1,
+      backgroundColor:'red',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    half2: {
+      flex:1,
+      flexDirection: 'row',
+      backgroundColor: 'blue',
+    },
+    half21: {
+      flex:1,
+      backgroundColor: 'green',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    half22: {
+      flex:1,
+      backgroundColor: 'black',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    text: {
+      color: 'white',
+      fontSize: 30,
+
+    }
+  })
