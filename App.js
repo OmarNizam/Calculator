@@ -7,25 +7,35 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Button, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-
+      resultText: ""
     }
   }
 
+  buttonPressed(text) {
+    console.log(text)
+    this.setState({
+      resultText: this.state.resultText + text
+    })
+  }
+
   render() {
+
     let rows = []
-    let nums =[[1, 2, 3], [4, 5, 6], [7, 8, 9], ['#',0,'=']]
+    let nums =[[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.',0,'=']]
     for (let i = 0; i < 4; i++) {
       let row = []
       for (let j = 0; j < 3; j++ ) {
         row.push(
-              <TouchableOpacity style={styles.btn}>
+              <TouchableOpacity
+                onPress={() => this.buttonPressed(nums[i][j])}
+                style={styles.btn}>
                 <Text style={styles.btntext}>{nums[i][j]}</Text>
               </TouchableOpacity>)
       }
@@ -44,7 +54,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.result}>
-          <Text style={styles.resultText}>11*11</Text>
+          <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.calculation}>
         <Text style={styles.calculationText}>121</Text>
