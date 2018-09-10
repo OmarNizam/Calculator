@@ -59,15 +59,24 @@ export default class App extends Component {
     this.setState({
       calculationText: eval(text)
     })
+  }
 
-
-
+  validate() {
+    let text = this.state.resultText
+    switch (text.slice(-1)) {
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        return false
+    }
+    return true
   }
 
   buttonPressed(text) {
     console.log(text)
     if (text == '=') {
-      return this.calculateResult()
+      return this.validate() && this.calculateResult()
     }
     this.setState({
       resultText: this.state.resultText + text
