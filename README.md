@@ -1,7 +1,7 @@
 # Calculator
 
-shall ```
-1- clone the repo
-2- $ yarn install
-3- $ yarn start
+```shell
+$ clone the repo
+$ yarn install
+$ yarn start
 ```
