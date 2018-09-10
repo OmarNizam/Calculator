@@ -14,10 +14,12 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      resultText: ""
+      resultText: "",
+      calculationText: ""
     }
     this.operations = ["DEL", "+", "-", "*", "/"]
   }
+
 
   operate(operation) {
     switch(operation) {
@@ -49,7 +51,16 @@ export default class App extends Component {
   calculateResult() {
     const text = this.state.resultText
     // now parse this text
-    console.log(text)
+    console.log(text, eval(text))
+    /** Standard to follow in the calculations
+    * To Follow Brackets -> of -> division -> mult -> add -> sub
+    **/
+    // using eval() : which give the value of string
+    this.setState({
+      calculationText: eval(text)
+    })
+
+
 
   }
 
@@ -95,7 +106,7 @@ export default class App extends Component {
           <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.calculation}>
-        <Text style={styles.calculationText}>121</Text>
+        <Text style={styles.calculationText}>{this.state.calculationText}</Text>
         </View>
         <View style={styles.buttons}>
           <View style={styles.numbers}>
